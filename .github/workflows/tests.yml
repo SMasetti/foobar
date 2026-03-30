@@ -1,0 +1,16 @@
+name : Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    run-ons: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - run: uv sync
+      - run: uv run pytest
